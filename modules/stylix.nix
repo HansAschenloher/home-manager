@@ -13,7 +13,7 @@
 
       #Dual screen
       url = "https://wallpaperaccess.com/full/1512143.jpg";
-      sha256 = "FPpJ3sqlz2P+D7eSdfs8WAQw033hjvdzLDiSzuMkMaw=";
+      sha256 = "sha256-d82KC1EfTWfgMnByWhVVBU3QVGKrDy/vbuONjSbG4pE=";
     };
     fonts = {
       serif = {

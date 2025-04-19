@@ -41,21 +41,14 @@
         inherit system;
         config.allowUnfree = true;
       };
+      user = import ./user.nix;
     in
     {
-      homeConfigurations.default = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.ja = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [
-          self.homeModules.default
-        ];
+        modules = [ self.homeModules.default ];
         extraSpecialArgs = {
-          inherit pkgs-unstable;
-          user = {
-            id = "ascj";
-            fullName = "Johann Aschenloher";
-            mail = "hansi.aschenloher@gmail.com ";
-            computerName = "pc";
-          };
+          inherit user;
         };
       };
 
