@@ -3,7 +3,7 @@
     enable = true;
     clock24 = true;
     keyMode = "vi";
-    prefix = "C-/";
+    prefix = "C-a";
     newSession = true;
     mouse = true;
     shell = lib.mkForce "${pkgs.zsh}/bin/zsh";
