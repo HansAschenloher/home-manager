@@ -54,10 +54,8 @@
           exec ~/.xsession
         else
           echo "Starting XMonad" | systemd-cat -p info
-          #exec ${pkgs.xmonad-with-packages}/bin/xmonad
+          exec ${pkgs.xmonad-with-packages}/bin/xmonad
         fi
-
-        exec ~/.xmonad/xmonad-x86_64-linux
 
         setxkbmap de
       '';
