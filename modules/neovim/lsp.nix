@@ -16,10 +16,15 @@
           nixd.enable = true;
           ts_ls = {
             enable = true;
-            settings.preferences = {
-              disableSuggestions = true;
-              includeInlayParameterNameHints = true;
-              includeInlayFunctionLikeReturnTypeHints = true;
+            settings = {
+              preferences = {
+                disableSuggestions = true;
+                includeInlayParameterNameHints = true;
+                includeInlayFunctionLikeReturnTypeHints = true;
+              };
+              filetypes = [
+                "ts"
+              ];
             };
           };
           eslint.enable = true;
