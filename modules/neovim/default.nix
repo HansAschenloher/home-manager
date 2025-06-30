@@ -15,6 +15,8 @@
 
   programs.nixvim = {
     enable = true;
+    defaultEditor = true;
+    vimdiffAlias = true;
     opts = {
       background = "light";
       colorcolumn = "80";
@@ -57,6 +59,15 @@
 
     globals = {
       mapleader = " ";
+    };
+
+    performance = {
+      byteCompileLua = {
+        enable = true;
+        initLua = true;
+        luaLib = true;
+        nvimRuntime = true;
+      };
     };
 
     #  colorschemes.dracula.enable = true;

@@ -16,6 +16,7 @@
 
     packages = with pkgs; [
       alacritty
+      bubblewrap
       fd
       fd
       file
