@@ -1,9 +1,9 @@
 {
-  programs.nixvim.plugins.dap = {
-    enable = true;
-    extensions = {
-      dap-python.enable = true;
-      dap-ui.enable = true;
+  programs.nixvim.plugins = {
+    dap = {
+      enable = true;
     };
+    dap-python.enable = true;
+    dap-ui.enable = true;
   };
 }

@@ -5,12 +5,11 @@
 }:
 {
   home = {
-    stateVersion = "24.11";
+    stateVersion = "25.05";
     username = user.id;
     homeDirectory = "/home/${user.id}";
     sessionVariables = {
       TERM = "alacritty";
-      EDITOR = "neovim";
       SHELL = "zsh";
     };
 
@@ -25,7 +24,9 @@
       httpie
       libreoffice
       nautilus
-      nerdfonts
+      nerd-fonts.hack
+      nerd-fonts._0xproto
+      nerd-fonts.monaspace
       nix-diff
       nix-du
       nixfmt-rfc-style
@@ -77,7 +78,7 @@
     eza.enable = true;
     home-manager.enable = true;
     htop.enable = true;
-    starship.enable = true;
+    starship.enable = false;
     tealdeer.enable = true;
     keychain = {
       enable = true;

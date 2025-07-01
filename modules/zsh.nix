@@ -36,13 +36,14 @@
       size = 50000;
       save = 50000;
     };
-    initExtraBeforeCompInit = ''
+
+    initContent = ''
       if [ -z "''${ASCIINEMA_REC}" ]; then
         source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
       fi
       ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(run-less)
-    '';
-    initExtra = ''
+
+
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
       setopt hist_verify
 
