@@ -57,7 +57,7 @@
           ./modules
           nixvim.homeManagerModules.nixvim
           stylix.homeModules.stylix
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           { programs.nix-index-database.comma.enable = true; }
         ];
       };
