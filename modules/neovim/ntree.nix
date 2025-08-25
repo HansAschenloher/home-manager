@@ -9,7 +9,7 @@
       {
         mode = "n";
         key = "<leader>t";
-        action = "<Cmd>NvimTreeToggle<CR>";
+        action = "<Cmd>NvimTreeFindFileToggle<CR>";
       }
     ];
   };
