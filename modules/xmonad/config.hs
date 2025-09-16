@@ -13,6 +13,7 @@ import XMonad.Layout.Tabbed
 --------------------------------------------------------------------------------
 
 myTerminal = "alacritty"
+myScreenshot = "flameshot --gui"
 
 
 
@@ -25,7 +26,7 @@ myLayout = tiled ||| Mirror tiled ||| Full ||| threeCol ||| simpleTabbed
     delta   = 3/100  -- Percent of screen to increment by when resizing panes
 
 
-myConfig = def 
+myConfig = def
   {
     modMask = mod1Mask,
     layoutHook = avoidStruts $ myLayout,
@@ -37,6 +38,7 @@ myConfig = def
       , ("M-p"  , spawn "rofi -show drun" )
       , ("M-s"  , sendMessage ToggleStruts)
       , ("M-S-l", spawn "i3lock-fancy")
+      , ("M-S-p", spawn myScreenshot)
       ]
 
 
