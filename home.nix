@@ -22,10 +22,11 @@
       flameshot
       hexyl
       httpie
+      jq
       libreoffice
       nautilus
-      nerd-fonts.hack
       nerd-fonts._0xproto
+      nerd-fonts.hack
       nerd-fonts.monaspace
       nix-diff
       nix-du
