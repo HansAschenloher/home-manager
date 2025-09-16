@@ -14,6 +14,7 @@
     };
 
     ignores = [ "*.swp" ];
+    extraConfig = "mergetool=nvimdiff";
 
     includes = [ { path = "~/.gitconfig"; } ];
 
