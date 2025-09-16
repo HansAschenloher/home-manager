@@ -59,6 +59,7 @@
 
     globals = {
       mapleader = " ";
+      makeprg = "./lint";
     };
 
     performance = {
@@ -97,6 +98,7 @@
       todo-comments.enable = true;
       web-devicons.enable = true;
       which-key.enable = true;
+      git-conflict.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
