@@ -44,9 +44,11 @@
       user = import ./user.nix;
     in
     {
-      homeConfigurations.ja = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."ja@pc" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ self.homeModules.default ];
+        modules = [
+          self.homeModules.default
+        ];
         extraSpecialArgs = {
           inherit user;
         };

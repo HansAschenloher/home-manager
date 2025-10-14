@@ -17,8 +17,8 @@
       alacritty
       bubblewrap
       fd
-      fd
       file
+      firefox
       flameshot
       gcc
       hexyl
