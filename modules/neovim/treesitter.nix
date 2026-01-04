@@ -18,11 +18,11 @@
     treesitter-textobjects.enable = true;
     treesitter-refactor = {
       enable = true;
-      highlightDefinitions.enable = true;
-      highlightCurrentScope.enable = false;
-      smartRename.enable = true;
-      smartRename.keymaps.smartRename = "grr";
-      navigation.keymaps = {
+      settings.highlightDefinitions.enable = true;
+      settings.highlightCurrentScope.enable = false;
+      settings.smartRename.enable = true;
+      settings.smartRename.keymaps.smartRename = "grr";
+      settings.navigation.keymaps = {
         gotoDefinition = "<leader>gd";
         listDefinitions = "<leader>ld";
         listDefinitionsToc = "<leader>lD";

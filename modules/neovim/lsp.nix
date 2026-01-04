@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   programs.nixvim = {
     plugins = {
@@ -9,7 +9,12 @@
           cssls.enable = true;
           dockerls.enable = true;
           gleam.enable = true;
+          gleam.package = pkgs-unstable.gleam;
           html.enable = true;
+          hls = {
+            enable = true;
+            installGhc = true;
+          };
           ltex.enable = true;
           lua_ls.enable = true;
           marksman.enable = true;
@@ -61,7 +66,7 @@
       lspkind.enable = true;
       lspsaga = {
         enable = true;
-        ui.devicon = true;
+        settings.ui.devicon = true;
       };
     };
 

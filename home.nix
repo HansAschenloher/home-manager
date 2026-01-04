@@ -20,6 +20,7 @@
       fd
       file
       flameshot
+      gcc
       hexyl
       httpie
       jq
@@ -40,6 +41,7 @@
       vivaldi
       wget
       xclip
+      zig
     ];
 
     file."startwm.sh" = {

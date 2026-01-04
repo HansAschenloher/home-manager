@@ -1,14 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.zsh = {
     enable = true;
     # Enabled if not ASCIINEMA recording
     # see initExtraBeforeCompInit
-    #enableAutosuggestions = true;
+    # enableAutosuggestions = true;
     # Add to system: environment.pathsToLink = [ "/share/zsh" ];
     enableCompletion = false;
     syntaxHighlighting.enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     history = {
       expireDuplicatesFirst = true;
       extended = true;
@@ -135,10 +135,10 @@
       '';
       plugins = [
         "git"
-        "globalias"
+        # "globalias"
         "colored-man-pages"
       ];
-      theme = "";
+      theme = "amuse";
     };
 
     sessionVariables = {
