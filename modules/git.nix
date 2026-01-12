@@ -8,7 +8,7 @@
         email = user.mail;
       };
 
-      aliases = {
+      alias = {
         co = "checkout";
         s = "status";
         a = "add";
