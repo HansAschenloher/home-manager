@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 {
   programs.nixvim = {
     plugins = {
@@ -9,7 +9,7 @@
           cssls.enable = true;
           dockerls.enable = true;
           gleam.enable = true;
-          gleam.package = pkgs-unstable.gleam;
+          gleam.package = pkgs.gleam;
           html.enable = true;
           hls = {
             enable = true;
