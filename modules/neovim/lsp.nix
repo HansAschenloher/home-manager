@@ -33,8 +33,8 @@
             };
           };
           eslint.enable = true;
-          volar.enable = true;
           golangci_lint_ls.enable = true;
+          vue_ls.enable = true;
           yamlls.enable = true;
           rust_analyzer = {
             enable = true;
