@@ -37,6 +37,7 @@
       nix-tree
       obsidian
       ripgrep
+      tig
       unzip
       vivaldi
       wget
