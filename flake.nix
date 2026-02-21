@@ -35,20 +35,35 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        overlays = [
+          (final: prev: {
+            unstable.teamspeak3 = pkgs-unstable.teamspeak3;
+          })
+        ];
       };
 
       pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
       };
-      user = import ./user.nix;
     in
     {
-      homeConfigurations."ja@pc" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."ja" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./hosts/pc
+          nixvim.homeModules.nixvim
+          stylix.homeModules.stylix
+          nix-index-database.homeModules.nix-index
+          { programs.nix-index-database.comma.enable = true; }
+        ];
+      };
+
+      homeConfigurations."test@pc" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           self.homeModules.default
-          self.homeModules.gaming
+          self.homeModules.roles.dev
         ];
         extraSpecialArgs = {
           user = {
@@ -60,6 +75,12 @@
       };
 
       homeModules = {
+        #TODO wite an auto register function for this.
+        roles = {
+          dev = {
+            imports = [ ./roles/dev ];
+          };
+        };
         default = {
           imports = [
             ./home.nix
