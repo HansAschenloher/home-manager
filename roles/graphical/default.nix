@@ -23,6 +23,7 @@
     libreoffice
     nautilus
     obsidian
+    vivaldi
   ];
 
   programs = { };

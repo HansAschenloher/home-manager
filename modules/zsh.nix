@@ -33,6 +33,8 @@ in
           "bg"
           "lg"
           ".."
+          "..."
+          "...."
           "ps"
           "htop"
           "qalc"
@@ -49,7 +51,7 @@ in
         save = 50000;
       };
 
-      initContent = ''
+      initContent = /* bash*/ ''
         if [ -z "''${ASCIINEMA_REC}" ]; then
           source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         fi
@@ -139,6 +141,7 @@ in
 
       oh-my-zsh = {
         enable = true;
+        theme = "amuse";
         extraConfig = ''
           DISABLE_AUTO_UPDATE="true"
           DISABLE_AUTO_TITLE="true"
@@ -150,7 +153,6 @@ in
           # "globalias"
           "colored-man-pages"
         ];
-        theme = "amuse";
       };
 
       sessionVariables = {

@@ -12,7 +12,7 @@
   ];
 
   home.sessionVariables = {
-    SHELL = pkgs.zsh;
+    SHELL = "zsh";
   };
 
   my.modules = {

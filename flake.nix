@@ -48,7 +48,7 @@
       };
     in
     {
-      homeConfigurations."ja" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."ja@pc" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           ./hosts/pc
@@ -59,31 +59,18 @@
         ];
       };
 
-      homeConfigurations."test@pc" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          self.homeModules.default
-          self.homeModules.roles.dev
-        ];
-        extraSpecialArgs = {
-          user = {
-            id = "ja";
-            fullName = "Johann Aschenloher";
-            mail = "hansi.aschenloher@gmail.com";
-          };
-        };
-      };
-
       homeModules = {
         #TODO wite an auto register function for this.
         roles = {
           dev = {
             imports = [ ./roles/dev ];
           };
+          graphical = {
+            imports = [ ./roles/graphical ];
+          };
         };
         default = {
           imports = [
-            ./home.nix
             ./modules
             nixvim.homeModules.nixvim
             stylix.homeModules.stylix
