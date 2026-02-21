@@ -48,21 +48,33 @@
         inherit pkgs;
         modules = [
           self.homeModules.default
+          self.homeModules.gaming
         ];
         extraSpecialArgs = {
-          inherit user;
+          user = {
+            id = "ja";
+            fullName = "Johann Aschenloher";
+            mail = "hansi.aschenloher@gmail.com";
+          };
         };
       };
 
-      homeModules.default = {
-        imports = [
-          ./home.nix
-          ./modules
-          nixvim.homeModules.nixvim
-          stylix.homeModules.stylix
-          nix-index-database.homeModules.nix-index
-          { programs.nix-index-database.comma.enable = true; }
-        ];
+      homeModules = {
+        default = {
+          imports = [
+            ./home.nix
+            ./modules
+            nixvim.homeModules.nixvim
+            stylix.homeModules.stylix
+            nix-index-database.homeModules.nix-index
+            { programs.nix-index-database.comma.enable = true; }
+          ];
+        };
+        gaming = {
+          imports = [
+            ./modules/gaming
+          ];
+        };
       };
     };
 }

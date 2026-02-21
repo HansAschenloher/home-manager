@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   programs.tmux = {
     enable = true;
     clock24 = true;
@@ -26,7 +27,7 @@
         extraConfig = ''
           set -g @resurrect-strategy-nvim 'session'
           set -g @resurrect-capture-pane-contents 'on'
-          '';
+        '';
       }
     ];
   };
