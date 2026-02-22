@@ -24,6 +24,7 @@
     nautilus
     obsidian
     vivaldi
+    vial
   ];
 
   programs = { };
