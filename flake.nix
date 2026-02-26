@@ -55,7 +55,6 @@
           nixvim.homeModules.nixvim
           stylix.homeModules.stylix
           nix-index-database.homeModules.nix-index
-          { programs.nix-index-database.comma.enable = true; }
         ];
       };
 
@@ -63,7 +62,13 @@
         #TODO wite an auto register function for this.
         roles = {
           dev = {
-            imports = [ ./roles/dev ];
+            imports = [
+              nix-index-database.homeModules.nix-index
+              ./roles/dev
+            ];
+          };
+          gaming = {
+            imports = [ ./roles/gaming ];
           };
           graphical = {
             imports = [ ./roles/graphical ];
