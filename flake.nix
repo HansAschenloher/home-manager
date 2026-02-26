@@ -63,6 +63,8 @@
         roles = {
           dev = {
             imports = [
+              nixvim.homeModules.nixvim
+              stylix.homeModules.stylix
               nix-index-database.homeModules.nix-index
               ./roles/dev
             ];
