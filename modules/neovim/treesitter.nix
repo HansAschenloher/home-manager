@@ -1,7 +1,13 @@
 {
+  imports = [
+    ./treesitter/grammar-xquery.nix
+  ];
   programs.nixvim.plugins = {
     treesitter = {
       enable = true;
+      #highlight.enable = true;
+      #folding.enable = true;
+      #indent.enable = true;
       settings = {
         incremental_selection.enable = true;
         nixvimInjections = true;
@@ -14,7 +20,25 @@
           "gitignore"
         ];
       };
-    };
+      luaConfig.post = /*lua*/''
+    -- Override / extend TypeScript injections
+    local ts_query = require("vim.treesitter.query")
+
+    local injection_query = [[
+      (
+        (comment) @injection.language
+        .
+        (template_string) @injection.content
+        (#match? @injection.language "/.*\s*([\w_+-]+)\s*.*/")
+      )
+    ]]
+
+    ts_query.set("typescript", "injections", injection_query)
+    ts_query.set("tsx", "injections", injection_query)
+        '';
+
+  };
+
     treesitter-textobjects.enable = true;
     treesitter-refactor = {
       enable = true;
