@@ -7,9 +7,7 @@
     ../../modules/screen-locker.nix
   ];
 
-  home.sessionVariables = {
-    TERM = pkgs.alacritty;
-  };
+  home.sessionVariables = { };
 
   my.modules = {
     windowManager.xmonad.enable = true;
