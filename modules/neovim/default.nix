@@ -115,6 +115,7 @@ in
         git-blame-nvim
         nerdcommenter
         nvim-dap-ui
+        nvim-dap-vscode-js
         vim-devicons
         vim-nix
       ];
