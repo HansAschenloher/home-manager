@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    niri = {
+      url = "github:sodiboo/niri-flake/main";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+    };
 
     stylix.url = "github:nix-community/stylix/release-25.11";
     nixvim = {
@@ -29,6 +33,7 @@
       stylix,
       nixvim,
       nix-index-database,
+      niri,
     }:
     let
       system = "x86_64-linux";
@@ -58,6 +63,17 @@
         ];
       };
 
+      homeConfigurations."ascj@laptop" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./hosts/laptop
+          nixvim.homeModules.nixvim
+          stylix.homeModules.stylix
+          nix-index-database.homeModules.nix-index
+          niri.homeModules.niri
+        ];
+      };
+
       homeModules = {
         #TODO wite an auto register function for this.
         roles = {
@@ -73,7 +89,9 @@
             imports = [ ./roles/gaming ];
           };
           graphical = {
-            imports = [ ./roles/graphical ];
+            imports = [
+              ./roles/graphical
+            ];
           };
         };
         default = {
