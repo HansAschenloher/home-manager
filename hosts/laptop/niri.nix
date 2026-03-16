@@ -100,6 +100,13 @@
         "Mod+Ctrl+L".action = set-column-width "+10%";
         "Mod+Ctrl+J".action = set-window-height "+10%";
         "Mod+Ctrl+K".action = set-window-height "-10%";
+
+        #Vertical Stack
+         "Mod+V".action = consume-window-into-column;
+         "Mod+Shift+V".action = expel-window-from-column;
+
+         #Tabed windows
+         "Mod+T".action = toggle-column-tabbed-display;
       };
     };
   };
