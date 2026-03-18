@@ -40,7 +40,11 @@
     #nix-top
     #nix-tree
     ripgrep
+    taskwarrior3
+    taskwarrior-tui
+    tasksh
     tig
+    timewarrior
     unzip
     wget
   ];
