@@ -2,7 +2,11 @@
 let
   cfg = config.my.modules.xrdp;
 in
-  { options.my.modules.xrdp = { enable = lib.mkEnableOption "My xrdp config";}; config = lib.mkIf cfg.enable {
+  {
+    options.my.modules.xrdp = {
+      enable = lib.mkEnableOption "My xrdp config";
+    };
+    config = lib.mkIf cfg.enable {
     # TODO Move to NixOs config
     home.file."startwm.sh" = {
       executable = true;

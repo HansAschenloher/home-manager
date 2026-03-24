@@ -5,6 +5,7 @@
     ../../modules/rofi.nix
     ../../modules/xmonad
     ../../modules/screen-locker.nix
+    ../../modules/xrdp.nix
   ];
 
   home.sessionVariables = { };
