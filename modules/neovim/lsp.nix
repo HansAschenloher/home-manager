@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.nixvim = {
     plugins = {
@@ -8,19 +8,51 @@
           bashls.enable = true;
           cssls.enable = true;
           dockerls.enable = true;
+          eslint = {
+            enable = true;
+            filetypes = [
+              "javascript"
+              "javascriptreact"
+              "javascript.jsx"
+              "typescript"
+              "typescriptreact"
+              "typescript.tsx"
+              "vue"
+              "svelt"
+              "astro"
+            ];
+          };
           gleam.enable = true;
           gleam.package = pkgs.gleam;
+          golangci_lint_ls.enable = true;
           html.enable = true;
           hls = {
             enable = true;
             installGhc = true;
           };
+          lemminx.enable = true; # XML
           ltex.enable = true;
           lua_ls.enable = true;
           marksman.enable = true;
-          nixd.enable = true;
-          ts_ls = {
+          nixd = {
             enable = true;
+            filetypes = ["nix"];
+            settings =
+            let
+              flake = ''(builtins.getFlake "/etc/nixos")""'';
+            in
+            {
+              nixpkgs = {
+                expr = "import ${flake}.inputs.nixpkgs { }";
+              };
+              formatting = {
+                command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+              };
+            };
+          };
+
+          ts_ls = {
+            enable = false;
             settings = {
               preferences = {
                 disableSuggestions = true;
@@ -32,14 +64,14 @@
               ];
             };
           };
-          eslint.enable = true;
-          golangci_lint_ls.enable = true;
-          vue_ls.enable = true;
           yamlls.enable = true;
           rust_analyzer = {
             enable = true;
             installRustc = true;
             installCargo = true;
+          };
+          vue_ls = {
+            enable = true;
           };
         };
 
@@ -66,7 +98,77 @@
       lspkind.enable = true;
       lspsaga = {
         enable = true;
-        settings.ui.devicon = true;
+        settings = {
+          implement.enable = true;
+          outline = {
+            autoClose = true;
+            autoPreview = true;
+            closeAfterJump = true;
+            layout = "normal"; # normal | float
+            winPosition = "right";
+            keys = {
+              jump = "<CR>";
+              quit = "<Esc>";
+              toggle_or_jump = "<CR>";
+            };
+          };
+          symbolInWinbar = {
+            enable=true;
+          };
+          rename = {
+            autoSave = false;
+            keys = {
+              exec = "<CR>";
+              quit="<Esc>";
+              select = "x";
+            };
+          };
+          ui = {
+            border = "rounded"; # One of none, single, double, rounded, solid, shadow
+            codeAction = "󰴺";
+            devicon = true;
+          };
+          hover = {
+            openCmd = "!floorp"; # Choose your browser
+            openLink = "gx";
+          };
+          diagnostic = {
+            borderFollow = true;
+            diagnosticOnlyCurrent = false;
+            showCodeAction = true;
+            extendRelatedInformation = true;
+          };
+          codeAction = {
+            extendGitSigns = false;
+            showServerName = true;
+            onlyInCursor = true;
+            numShortcut = true;
+            keys = {
+              exec = "<CR>";
+              quit = [
+                "<Esc>"
+                "q"
+              ];
+            };
+          };
+          lightbulb = {
+            enable = false;
+            sign = false;
+            virtualText = true;
+          };
+          finder = {
+            keys = {
+              shuttle = "<Tab>";
+              toggle_or_open = "<CR>";
+              tabnew = "<CR>";
+              quit = "<Esc>";
+            };
+          };
+          scrollPreview = {
+            scrollDown = "<C-f>";
+            scrollUp = "<C-b>";
+          };
+        };
       };
     };
 
