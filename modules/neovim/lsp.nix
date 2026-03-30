@@ -50,6 +50,7 @@
               };
             };
           };
+          pyright.enable = true;
 
           ts_ls = {
             enable = false;
