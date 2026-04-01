@@ -36,24 +36,24 @@
           marksman.enable = true;
           nixd = {
             enable = true;
-            filetypes = ["nix"];
+            filetypes = [ "nix" ];
             settings =
-            let
-              flake = ''(builtins.getFlake "/etc/nixos")""'';
-            in
-            {
-              nixpkgs = {
-                expr = "import ${flake}.inputs.nixpkgs { }";
+              let
+                flake = ''(builtins.getFlake "/etc/nixos")""'';
+              in
+              {
+                nixpkgs = {
+                  expr = "import ${flake}.inputs.nixpkgs { }";
+                };
+                formatting = {
+                  command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+                };
               };
-              formatting = {
-                command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
-              };
-            };
           };
           pyright.enable = true;
 
           ts_ls = {
-            enable = false;
+            enable = true;
             settings = {
               preferences = {
                 disableSuggestions = true;
@@ -114,13 +114,13 @@
             };
           };
           symbolInWinbar = {
-            enable=true;
+            enable = true;
           };
           rename = {
             autoSave = false;
             keys = {
               exec = "<CR>";
-              quit="<Esc>";
+              quit = "<Esc>";
               select = "x";
             };
           };
@@ -129,10 +129,10 @@
             codeAction = "󰴺";
             devicon = true;
           };
-          hover = {
-            openCmd = "!floorp"; # Choose your browser
-            openLink = "gx";
-          };
+          #hover = {
+          #openCmd = "!vivaldi"; # Choose your browser
+          #openLink = "gx";
+          #};
           diagnostic = {
             borderFollow = true;
             diagnosticOnlyCurrent = false;
