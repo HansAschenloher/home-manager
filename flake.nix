@@ -22,6 +22,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hytale-launcher.url = "github:JPyke3/hytale-launcher-nix";
   };
 
   outputs =
@@ -34,6 +35,7 @@
       nixvim,
       nix-index-database,
       niri,
+      hytale-launcher
     }:
     let
       system = "x86_64-linux";
@@ -60,6 +62,7 @@
           nixvim.homeModules.nixvim
           stylix.homeModules.stylix
           nix-index-database.homeModules.nix-index
+          {home.packages = [hytale-launcher.packages.${pkgs.system}.default];}
         ];
       };
 
@@ -86,7 +89,9 @@
             ];
           };
           gaming = {
-            imports = [ ./roles/gaming ];
+            imports = [
+              ./roles/gaming
+            ];
           };
           graphical = {
             imports = [
