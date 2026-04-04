@@ -51,7 +51,7 @@ in
         save = 50000;
       };
 
-      initContent = /* bash*/ ''
+      initContent = /* bash */ ''
         if [ -z "''${ASCIINEMA_REC}" ]; then
           source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
         fi
@@ -158,7 +158,7 @@ in
       sessionVariables = {
         EDITOR = "nvim";
         PAGER = "bat";
-        BROWSER = "google-chrome-stable";
+        BROWSER = "vivaldi";
       };
 
       shellAliases = {

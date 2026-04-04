@@ -1,7 +1,8 @@
 let
   fullName = "Johann Aschenloher";
   email = "hansi.aschenloher@gmail.com";
-in {
+in
+{
   imports = [
     ../../roles/dev
     ../../roles/graphical
