@@ -51,6 +51,7 @@
               };
           };
           pyright.enable = true;
+          ruff.enable = true;
 
           ts_ls = {
             enable = true;
