@@ -75,6 +75,15 @@
           vue_ls = {
             enable = true;
           };
+
+          zls = {
+            enable = true;
+             filetypes = [
+              "c"
+              "cpp"
+              "zig"
+            ];
+          };
         };
 
         keymaps = {
