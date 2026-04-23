@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -35,6 +36,8 @@ in
           a = "add";
           ai = "add -i";
           r = "rebase -i";
+          cc = "shortlog -sn --no-merges"; # Comit Count of authors
+          topfiles = "!f() { git log --name-only --pretty=format: \"$@\" | ${pkgs.ripgrep}/bin/rg -v '^$' | sort | uniq -c | sort -nr | head -20; }; f";
         };
       };
 
