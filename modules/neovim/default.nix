@@ -21,6 +21,7 @@ in
     ./telescope.nix
     ./treesitter.nix
     ./undotree.nix
+    ./utils.nix
   ];
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
