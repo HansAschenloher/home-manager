@@ -4,7 +4,7 @@
   ];
   programs.nixvim.plugins = {
     treesitter = {
-      enable = true;
+      enable = false;
       #highlight.enable = true;
       #folding.enable = true;
       #indent.enable = true;
@@ -20,28 +20,28 @@
           "gitignore"
         ];
       };
-      luaConfig.post = /*lua*/''
-    -- Override / extend TypeScript injections
-    local ts_query = require("vim.treesitter.query")
+      luaConfig.post = /* lua */ ''
+        -- Override / extend TypeScript injections
+        local ts_query = require("vim.treesitter.query")
 
-    local injection_query = [[
-      (
-        (comment) @injection.language
-        .
-        (template_string) @injection.content
-        (#match? @injection.language "/.*\s*([\w_+-]+)\s*.*/")
-      )
-    ]]
+        local injection_query = [[
+          (
+            (comment) @injection.language
+            .
+            (template_string) @injection.content
+            (#match? @injection.language "/.*\s*([\w_+-]+)\s*.*/")
+          )
+        ]]
 
-    ts_query.set("typescript", "injections", injection_query)
-    ts_query.set("tsx", "injections", injection_query)
-        '';
+        ts_query.set("typescript", "injections", injection_query)
+        ts_query.set("tsx", "injections", injection_query)
+      '';
 
-  };
+    };
 
-    treesitter-textobjects.enable = true;
+    treesitter-textobjects.enable = false;
     treesitter-refactor = {
-      enable = true;
+      enable = false;
       settings.highlightDefinitions.enable = true;
       settings.highlightCurrentScope.enable = false;
       settings.smartRename.enable = true;

@@ -14,13 +14,9 @@ let
 in
 {
   programs.nixvim.plugins.treesitter = {
-    enable = true;
     grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars ++ [ treesitter-xquery-grammar ];
-
-    # Register the parser to filetype
-    languageRegister.nu = "nu";
+    languageRegister.xquery = "xquery";
   };
 
   programs.nixvim.extraPlugins = [ treesitter-xquery-grammar ];
 }
-

@@ -46,7 +46,7 @@
                   expr = "import ${flake}.inputs.nixpkgs { }";
                 };
                 formatting = {
-                  command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+                  command = [ "${lib.getExe pkgs.nixfmt}" ];
                 };
               };
           };
@@ -78,7 +78,7 @@
 
           zls = {
             enable = true;
-             filetypes = [
+            filetypes = [
               "c"
               "cpp"
               "zig"

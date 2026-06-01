@@ -21,7 +21,7 @@
               "prettier"
             ]
           ];
-          nix = [ "nixfmt-rfc-style" ];
+          nix = [ "nixfmt" ];
           java = [ "google-java-format" ];
           kotlin = [ "ktlint" ];
           yaml = [ "yamlfix" ];

@@ -13,7 +13,7 @@ in
       extraConfig = ''
         AddKeysToAgent yes
       '';
-      matchBlocks = {
+      settings = {
         "*" = {
           forwardAgent = true;
         };

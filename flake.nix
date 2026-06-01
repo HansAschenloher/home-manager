@@ -1,10 +1,10 @@
 {
   description = "My Home-manager configuration";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri = {
@@ -12,9 +12,9 @@
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
 
-    stylix.url = "github:nix-community/stylix/release-25.11";
+    stylix.url = "github:nix-community/stylix/master";
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.11";
+      url = "github:nix-community/nixvim/nixos-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -35,7 +35,7 @@
       nixvim,
       nix-index-database,
       niri,
-      hytale-launcher
+      hytale-launcher,
     }:
     let
       system = "x86_64-linux";
@@ -62,7 +62,7 @@
           nixvim.homeModules.nixvim
           stylix.homeModules.stylix
           nix-index-database.homeModules.nix-index
-          {home.packages = [hytale-launcher.packages.${pkgs.system}.default];}
+          { home.packages = [ hytale-launcher.packages.${pkgs.system}.default ]; }
         ];
       };
 
