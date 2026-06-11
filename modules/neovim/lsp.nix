@@ -22,7 +22,7 @@
               "astro"
             ];
           };
-          gleam.enable = true;
+          gleam.enable = false;
           gleam.package = pkgs.gleam;
           golangci_lint_ls.enable = true;
           html.enable = true;
