@@ -1,12 +1,13 @@
-{lib, ...}:
+{ ... }:
 let
   fullName = "Johann Aschenloher";
   email = "hansi.aschenloher@gmail.com";
-in {
+in
+{
   imports = [
     ../../roles/dev
     ../../roles/graphical
-    ./niri.nix
+    #./niri.nix
     #../../roles/gaming
   ];
   home.username = "ascj";
@@ -17,6 +18,5 @@ in {
     git.user = {
       inherit fullName email;
     };
-    windowManager.xmonad.enable = lib.mkForce false;
   };
 }
