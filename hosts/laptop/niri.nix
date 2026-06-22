@@ -22,7 +22,7 @@
       };
 
       layout = {
-        gaps = 1;
+        gaps = 8;
         #preset-column-widths = config.lib.niri.proportion [0.5];
         #default-column-width = {
           #proportion = 1;
@@ -73,8 +73,8 @@
         # Focus movment
         "Mod+H".action = focus-column-left;
         "Mod+L".action = focus-column-right;
-        #"Mod+J".action = focus-column-down;
-        #"Mod+K".action = focus-column-up;
+        "Mod+J".action = focus-window-down;
+        "Mod+K".action = focus-window-up;
 
         "Mod+Left".action = focus-column-left;
         "Mod+Right".action = focus-column-right;
@@ -104,9 +104,14 @@
         #Vertical Stack
          "Mod+V".action = consume-window-into-column;
          "Mod+Shift+V".action = expel-window-from-column;
+         "Mod+Shift+0".action = reset-window-height;
 
          #Tabed windows
          "Mod+T".action = toggle-column-tabbed-display;
+
+         #Scratch Coloumn
+         #"Mod+Minus".action = move-window-to-column -1;
+         #"Mod+Grave".action = focus-column-first;
       };
     };
   };
