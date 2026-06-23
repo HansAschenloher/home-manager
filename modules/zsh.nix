@@ -59,6 +59,7 @@ in
 
 
         source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+        source <(fzf --zsh)
         setopt hist_verify
 
         # filetypes
