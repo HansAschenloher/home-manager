@@ -40,9 +40,10 @@
     #nix-top
     #nix-tree
     ripgrep
-    taskwarrior3
-    taskwarrior-tui
+    shellcheck
     tasksh
+    taskwarrior-tui
+    taskwarrior3
     tig
     timewarrior
     unzip
