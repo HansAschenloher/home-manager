@@ -47,6 +47,7 @@
     tig
     timewarrior
     unzip
+    up
     wget
   ];
 
