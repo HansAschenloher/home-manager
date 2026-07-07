@@ -57,7 +57,6 @@ in
         fi
         ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(run-less)
 
-
         source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
         source <(fzf --zsh)
         setopt hist_verify
@@ -138,6 +137,8 @@ in
         clear() {printf "\ec\e[3J"; zle redisplay}
         zle -N clear
         bindkey "^[n" clear
+
+        autoload -Uz bashcompinit && bashcompinit
       '';
 
       oh-my-zsh = {
