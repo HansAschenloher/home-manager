@@ -120,6 +120,28 @@ in
         vim-devicons
         vim-nix
       ];
+
+      extraLuaConfig = /* lua */ ''
+        local function delete_qf_entry()
+          local qf = vim.fn.getqflist()
+          local idx = vim.fn.line('.') - 1
+
+          if qf[idx + 1] then
+            table.remove(qf, idx + 1)
+            vim.fn.setqflist(qf, 'r')
+          end
+        end
+
+        vim.api.nvim_create_autocmd("FileType", {
+          pattern = "qf",
+          callback = function()
+            vim.keymap.set("n", "dd", delete_qf_entry, {
+              buffer = true,
+              desc = "Delete quickfix entry",
+            })
+          end,
+        })
+      '';
     };
   };
 }
