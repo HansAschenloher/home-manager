@@ -121,7 +121,7 @@ in
         vim-nix
       ];
 
-      extraLuaConfig = /* lua */ ''
+      extraConfigLua = /* lua */ ''
         local function delete_qf_entry()
           local qf = vim.fn.getqflist()
           local idx = vim.fn.line('.') - 1
