@@ -15,7 +15,6 @@
     stylix.url = "github:nix-community/stylix/release-26.05";
     nixvim = {
       url = "github:nix-community/nixvim/nixos-26.05";
-      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-index-database = {
@@ -23,10 +22,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hytale-launcher.url = "github:JPyke3/hytale-launcher-nix";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:denful/import-tree";
   };
 
   outputs =
-    {
+    inputs@{
       self,
       nixpkgs,
       nixpkgs-unstable,
@@ -36,6 +38,8 @@
       nix-index-database,
       niri,
       hytale-launcher,
+      flake-parts,
+      ...
     }:
     let
       system = "x86_64-linux";
@@ -53,66 +57,45 @@
         inherit system;
         config.allowUnfree = true;
       };
+
+      newConfig = flake-parts.lib.mkFlake { inherit inputs; } {
+        imports = [
+          inputs.home-manager.flakeModules.home-manager
+          inputs.flake-parts.flakeModules.modules
+          (inputs.import-tree ./modules)
+        ];
+
+        perSystem = {
+          pkgs = import inputs.nixpkgs {
+            system = pkgs.system;
+            config.allowUnfree = true;
+          };
+        };
+      };
     in
-    {
-      homeConfigurations."ja@pc" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./hosts/pc
-          nixvim.homeModules.nixvim
-          stylix.homeModules.stylix
-          nix-index-database.homeModules.nix-index
-          { home.packages = [ hytale-launcher.packages.${pkgs.system}.default ]; }
-        ];
-      };
+    newConfig;
 
-      homeConfigurations."ascj@laptop" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./hosts/laptop
-          nixvim.homeModules.nixvim
-          stylix.homeModules.stylix
-          nix-index-database.homeModules.nix-index
-          niri.homeModules.niri
-        ];
-      };
+  #{
+  #homeConfigurations."ja@pc" = home-manager.lib.homeManagerConfiguration {
+  #inherit pkgs;
+  #modules = [
+  #./hosts/pc
+  #nixvim.homeModules.nixvim
+  #stylix.homeModules.stylix
+  #nix-index-database.homeModules.nix-index
+  #{ home.packages = [ hytale-launcher.packages.${pkgs.system}.default ]; }
+  #];
+  #};
 
-      homeModules = {
-        #TODO wite an auto register function for this.
-        roles = {
-          dev = {
-            imports = [
-              nixvim.homeModules.nixvim
-              stylix.homeModules.stylix
-              nix-index-database.homeModules.nix-index
-              ./roles/dev
-            ];
-          };
-          gaming = {
-            imports = [
-              ./roles/gaming
-            ];
-          };
-          graphical = {
-            imports = [
-              ./roles/graphical
-            ];
-          };
-        };
-        default = {
-          imports = [
-            ./modules
-            nixvim.homeModules.nixvim
-            stylix.homeModules.stylix
-            nix-index-database.homeModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-          ];
-        };
-        gaming = {
-          imports = [
-            ./modules/gaming
-          ];
-        };
-      };
-    };
+  #homeConfigurations."ascj@laptop" = home-manager.lib.homeManagerConfiguration {
+  #inherit pkgs;
+  #modules = [
+  #./hosts/laptop
+  #nixvim.homeModules.nixvim
+  #stylix.homeModules.stylix
+  #nix-index-database.homeModules.nix-index
+  #niri.homeModules.niri
+  #];
+  #};
+  #};
 }

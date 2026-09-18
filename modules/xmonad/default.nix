@@ -1,18 +1,9 @@
 {
-  config,
-  pkgs,
-  lib,
   ...
 }:
-let
-  cfg = config.my.modules.windowManager.xmonad;
-in
 {
-  options.my.modules.windowManager.xmonad = {
-    enable = lib.mkEnableOption "My xmonad config";
-  };
-
-  config = lib.mkIf cfg.enable {
+  #TODO rework xmonad config
+  flake.modules.homeManager.gui = { pkgs, ... }: {
     home.packages = [
       pkgs.i3lock-fancy
     ];

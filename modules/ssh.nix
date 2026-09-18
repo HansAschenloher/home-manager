@@ -1,12 +1,6 @@
-{ config, lib, ... }:
-let
-  cfg = config.my.modules.ssh;
-in
+{ ... }:
 {
-  options.my.modules.ssh = {
-    enable = lib.mkEnableOption "My ssh config";
-  };
-  config = lib.mkIf cfg.enable {
+  flake.modules.homeManager.cli = { ... }: {
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;

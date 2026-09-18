@@ -1,23 +1,14 @@
 {
-  pkgs,
-  config,
-  lib,
   ...
 }:
-let
-  cfg = config.my.modules.stylix;
-in
 {
-  options.my.modules.stylix = {
-    enable = lib.mkEnableOption "My stylix config";
-  };
-  config = lib.mkIf cfg.enable {
+  flake.modules.homeManager.cli = { lib, pkgs, ... }: {
     stylix = {
-
       enable = true;
       polarity = "dark";
       base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
 
+      #TODO rework how background imahes are handles
       image = pkgs.fetchurl {
         #Single Screen
         #url = "https://wallpaperaccess.com/full/1267226.jpg";
@@ -49,6 +40,5 @@ in
         };
       };
     };
-
   };
 }

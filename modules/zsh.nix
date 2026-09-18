@@ -1,23 +1,12 @@
 {
-  pkgs,
-  config,
-  lib,
   ...
 }:
-let
-  cfg = config.my.modules.zsh;
-in
 {
-  options.my.modules.zsh = {
-    enable = lib.mkEnableOption "My zsh config";
-  };
-  config = lib.mkIf cfg.enable {
+  #TODO rework and refine this config
+  flake.modules.homeManager.cli = { pkgs, config, ... }: {
     programs.zsh = {
       enable = true;
-      # Enabled if not ASCIINEMA recording
-      # see initExtraBeforeCompInit
-      # enableAutosuggestions = true;
-      # Add to system: environment.pathsToLink = [ "/share/zsh" ];
+      autosuggestion.enable = true;
       enableCompletion = false;
       syntaxHighlighting.enable = true;
       dotDir = "${config.xdg.configHome}/zsh";
@@ -28,6 +17,11 @@ in
         ignorePatterns = [
           "ls"
           "ll"
+          "ls -la"
+          "nix repl"
+          "ghci"
+          "python"
+          "node"
           "l"
           "fg"
           "bg"
@@ -47,8 +41,8 @@ in
         ];
         ignoreSpace = true;
         share = false;
-        size = 50000;
-        save = 50000;
+        size = 500000;
+        save = 500000;
       };
 
       initContent = /* bash */ ''
@@ -157,6 +151,7 @@ in
         ];
       };
 
+      # TODO make configurable in the user config
       sessionVariables = {
         EDITOR = "nvim";
         PAGER = "bat";

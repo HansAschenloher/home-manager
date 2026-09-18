@@ -1,13 +1,7 @@
-{config, lib, pkgs, ...}:
-let
-  cfg = config.my.modules.xrdp;
-in
-  {
-    options.my.modules.xrdp = {
-      enable = lib.mkEnableOption "My xrdp config";
-    };
-    config = lib.mkIf cfg.enable {
-    # TODO Move to NixOs config
+{ ... }:
+{
+  flake.modules.homeManager.xrdp = { pkgs, ... }: {
+    # TODO rework this whole thing
     home.file."startwm.sh" = {
       executable = true;
       text = ''
@@ -29,4 +23,5 @@ in
         setxkbmap de
       '';
     };
-  };}
+  };
+}

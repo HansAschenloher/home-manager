@@ -1,17 +1,5 @@
 {
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-let
-  cfg = config.my.modules.bat;
-in
-{
-  options.my.modules.bat = {
-    enable = lib.mkEnableOption "My bat config";
-  };
-  config = lib.mkIf cfg.enable {
+  flake.modules.homeManager.cli = { pkgs, lib, ... }: {
     programs.bat = {
       enable = true;
     };

@@ -1,17 +1,8 @@
 {
-  config,
-  pkgs,
-  lib,
   ...
 }:
-let
-  cfg = config.my.modules.tmux;
-in
 {
-  options.my.modules.tmux = {
-    enable = lib.mkEnableOption "My tmux config";
-  };
-  config = lib.mkIf cfg.enable {
+  flake.modules.homeManager.cli = { lib, pkgs, ... }: {
     programs.tmux = {
       enable = true;
       clock24 = true;
@@ -19,7 +10,7 @@ in
       prefix = "C-b";
       newSession = true;
       mouse = true;
-      shell = lib.mkForce "${pkgs.zsh}/bin/zsh";
+      shell = lib.mkForce "${pkgs.zsh}/bin/zsh"; # TODO Make configurable
       sensibleOnTop = true;
       extraConfig = ''
         set -g base-index 1
@@ -33,7 +24,7 @@ in
         tmuxPlugins.copycat
         tmuxPlugins.vim-tmux-navigator
         tmuxPlugins.mode-indicator
-        tmuxPlugins.urlview
+        tmuxPlugins.urlview # TODO Revist the plugins
         {
           plugin = tmuxPlugins.resurrect;
           extraConfig = ''
