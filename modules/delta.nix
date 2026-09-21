@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeModules.cli = {
+  flake.modules.homeManager.cli = {
     programs.delta = {
       enable = true;
       options = {

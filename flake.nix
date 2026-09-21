@@ -13,8 +13,9 @@
     };
 
     stylix.url = "github:nix-community/stylix/release-26.05";
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-26.05";
+    nixvim-config = {
+      #url = "github:HansAschenloher/nixvim-config";
+      url = "path:/home/ascj/src/neovim-config";
     };
 
     nix-index-database = {
@@ -34,7 +35,6 @@
       nixpkgs-unstable,
       home-manager,
       stylix,
-      nixvim,
       nix-index-database,
       niri,
       hytale-launcher,
