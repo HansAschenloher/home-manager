@@ -515,8 +515,8 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1789972627,
-        "narHash": "sha256-Mrd54D2MDHYHCT5aaQmnR7LrenIBjdHkauaj8LkPzGM=",
+        "lastModified": 1789981111,
+        "narHash": "sha256-k53yulEhclL/3GFSDAdBvPB0ch9DuefbBFrs3SG/cy8=",
         "path": "/home/ascj/src/neovim-config",
         "type": "path"
       },
