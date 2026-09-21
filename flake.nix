@@ -30,14 +30,8 @@
 
   outputs =
     inputs@{
-      self,
       nixpkgs,
       nixpkgs-unstable,
-      home-manager,
-      stylix,
-      nix-index-database,
-      niri,
-      hytale-launcher,
       flake-parts,
       ...
     }:

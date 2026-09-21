@@ -1,5 +1,11 @@
-{ ... }: {
+{ inputs, ... }: {
   flake.modules.homeManager.cli = { pkgs, ... }: {
+
+    imports = [
+      inputs.stylix.homeModules.stylix
+      inputs.nix-index-database.homeModules.default
+    ];
+
     home.packages = with pkgs; [
       bubblewrap
       fd
