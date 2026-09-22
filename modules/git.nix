@@ -34,6 +34,11 @@
         ];
         includes = [ { path = "~/.gitconfig"; } ];
         lfs.enable = true;
+
+        package = pkgs.gitFull.override { withLibsecret = true; };
+        settings.credential.helper = "libsecret";
       };
+
+      services.gnome-keyring.enable = true;
     };
 }
